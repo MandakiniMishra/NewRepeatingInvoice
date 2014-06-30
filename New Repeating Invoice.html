@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://login.xero.com/" />
+<title>New Repeating Invoice</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">New Repeating Invoice</td></tr>
+</thead><tbody>
+<tr>
+	<td>setSpeed</td>
+	<td>500</td>
+	<td></td>
+</tr>
+<!--Load input data from external XML-->
+<tr>
+	<td>forXml</td>
+	<td>javascript{inputDataForTestCases}</td>
+	<td></td>
+</tr>
+<!--Select Repeating Invoice option from Acconts -> Sales -> Repeating Invoice-->
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>javascript{accountsMenuDropdown}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>javascript{salesOptionUnderAccountsMenuDropdown}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>javascript{repeatingInvoiceOptionUnderNewMenuDropdown}</td>
+	<td></td>
+</tr>
+<!--Type Repeat Frequency Period-->
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>javascript{invoiceFrequencyIntegerUnitTextField}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>javascript{invoiceFrequencyIntegerUnitTextField}</td>
+	<td>${invoiceFrequencyIntegerUnit}</td>
+</tr>
+<!--Select Repeat Frequnecy Time Unit Week(s)/Month(s)-->
+<tr>
+	<td>click</td>
+	<td>javascript{invoiceFrequencyDropdownButton}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>javascript{invoiceFrequencySelectionOption +&quot;'&quot; + storedVars['invoiceFrequencyTimeUnit']+&quot;']&quot;}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>javascript{invoiceFrequencySelectionOption +&quot;'&quot; + storedVars['invoiceFrequencyTimeUnit']+&quot;']&quot;}</td>
+	<td></td>
+</tr>
+<!--Enter invoice date-->
+<tr>
+	<td>type</td>
+	<td>javascript{startDateTextField}</td>
+	<td>javascript{tomorrowsDate}</td>
+</tr>
+<!--Enter Due Date Day-->
+<tr>
+	<td>type</td>
+	<td>javascript{dueDateDayTextField}</td>
+	<td>${dueDateDay}</td>
+</tr>
+<!--Select Due Date Type-->
+<tr>
+	<td>click</td>
+	<td>javascript{dueDateDropdownButton}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>javascript{ofTheFollowingMonthOptionFromDueDateDropdown}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>javascript{ofTheFollowingMonthOptionFromDueDateDropdown}</td>
+	<td></td>
+</tr>
+<!--Click and choose the invoice option-->
+<tr>
+	<td>if</td>
+	<td>'${invoiceOption}'=='Save as Draft'</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>javascript{saveAsDraftInvoiceOptionRadioBox}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>elseIf</td>
+	<td>'${invoiceOption}'=='Approve'</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>javascript{approveInvoiceOptionRadioBox}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>else</td>
+	<td>'$invoiceOption'=='Approve &amp; Send'</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>javascript{approveAndSendInvoiceOptionRadioBox}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>javascript{toEmailAddressTextField}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>javascript{toEmailAddressTextField}</td>
+	<td>mandmish@gmail.com</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>javascript{emailSaveButton}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementNotPresent</td>
+	<td>javascript{emailSaveButton}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>endIf</td>
+	<td></td>
+	<td></td>
+</tr>
+<!--Enter customer name in "Invoice To" field-->
+<tr>
+	<td>waitForEditable</td>
+	<td>javascript{invoiceToTextField}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>javascript{invoiceToTextField}</td>
+	<td>${invoiceTo}</td>
+</tr>
+<!--Set Reference-->
+<tr>
+	<td>type</td>
+	<td>javascript{referenceTextField}</td>
+	<td>javascript{currentTimestamp}</td>
+</tr>
+<!--Set Branding as Standard-->
+<tr>
+	<td>click</td>
+	<td>javascript{brandingDropdownButton}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>javascript{brandingOptionFromDropdown + storedVars['brandingOption'] + &quot;']&quot;}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>javascript{brandingOptionFromDropdown + storedVars['brandingOption'] + &quot;']&quot;}</td>
+	<td></td>
+</tr>
+<!--Set Currency as Euro-->
+<tr>
+	<td>type</td>
+	<td>javascript{currencyTextField}</td>
+	<td>${currency}</td>
+</tr>
+<!--Set Amounts are - No Tax-->
+<tr>
+	<td>click</td>
+	<td>javascript{amountsAreDropdownButton}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>javascript{amountAreOptionFromDropdown + storedVars['amountsAre'] + &quot;']&quot;}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>javascript{amountAreOptionFromDropdown + storedVars['amountsAre'] + &quot;']&quot;}</td>
+	<td></td>
+</tr>
+<!--Set Item Code-->
+<tr>
+	<td>click</td>
+	<td>xpath=//*[contains(@class,'x-grid3-col-colPriceList')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>javascript{iteamDropDownButton}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>javascript{iteamDropDownButton}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>javascript{ItemCodeFromDropdown}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>javascript{ItemCodeFromDropdown}</td>
+	<td></td>
+</tr>
+<!--Click on "Save" button-->
+<tr>
+	<td>clickAndWait</td>
+	<td>javascript{saveButtonOnRepeatingInvoicePage}</td>
+	<td></td>
+</tr>
+<!--Assert the Success notification is displayed-->
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>javascript{successNotificationTextForCreateRepeatingInvoice}</td>
+	<td>${successNotificationText}</td>
+</tr>
+<!--Verify that newly created invoice template in visible on repeating tab-->
+<tr>
+	<td>verifyVisible</td>
+	<td>javascript{referenceOfNewlyCreatedInvoice}</td>
+	<td></td>
+</tr>
+<!--Verify that Invoice Option is same as chosen by user-->
+<tr>
+	<td>if</td>
+	<td>'${invoiceOption}'=='Save as Draft'</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>javascript{invoiceWillBeTextOnReferenceTab}</td>
+	<td>Saved as Draft</td>
+</tr>
+<tr>
+	<td>elseIf</td>
+	<td>'${invoiceOption}'=='Approve'</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>javascript{invoiceWillBeTextOnReferenceTab}</td>
+	<td>Approved</td>
+</tr>
+<tr>
+	<td>elseIf</td>
+	<td>'$invoiceOption'=='Approve &amp; Send'</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>javascript{invoiceWillBeTextOnReferenceTab}</td>
+	<td>Approved &amp; Sent</td>
+</tr>
+<tr>
+	<td>endIf</td>
+	<td></td>
+	<td></td>
+</tr>
+<!--Go back to dashboard-->
+<tr>
+	<td>clickAndWait</td>
+	<td>id=Dashboard</td>
+	<td></td>
+</tr>
+<tr>
+	<td>endForXml</td>
+	<td></td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<testdata>
+  <vars dataDescription="inputDataForTC1" invoiceFrequencyIntegerUnit="1" invoiceFrequencyTimeUnit = "Week(s)" dueDateDay ="25" invoiceOption = "Save as Draft" invoiceTo ="Mr. Thomas Edison" brandingOption="Special Projects" currency="AUD Australian Dollar" amountsAre="No Tax" successNotificationText="Repeating Template Saved. Click to view."/>
+  <vars dataDescription="inputDataForTC2" invoiceFrequencyIntegerUnit="2" invoiceFrequencyTimeUnit ="Month(s)" dueDateDay ="3"  invoiceOption = "Approve" invoiceTo ="Mr. Elbert Einstein" brandingOption="Standard" currency="INR Indian Rupee" amountsAre="Tax Inclusive" successNotificationText="Repeating Template Saved. Click to view."/>
+  <vars dataDescription="inputDataForTC3" invoiceFrequencyIntegerUnit="3" invoiceFrequencyTimeUnit ="Week(s)" dueDateDay ="14"  invoiceOption = "Approve &amp; Send" invoiceTo ="Charles Darwin" brandingOption="Special Projects" currency="NZD New Zealand Dollar" amountsAre="Tax Exclusive" successNotificationText="Repeating Template Saved. Click to view."/>
+</testdata>
